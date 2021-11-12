@@ -17,6 +17,14 @@ hr {
     font-size: 22px;
 }
 
+.navbar-dark .navbar-toggler {
+    border: none !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("");
+}
+
 section {
     height: 100vh;
     width: 100%;
@@ -27,6 +35,7 @@ section {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    overflow: hidden;
 }
 
 .nav-link {
