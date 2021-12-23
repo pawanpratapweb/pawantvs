@@ -1,5 +1,6 @@
 const express = require("express");
-const fs = require('fs')
+const fs = require('fs');
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
@@ -31,4 +32,4 @@ app.get("*", (req, res) => {
 //   })
 // })
 
-app.listen(8000);
+app.listen(port);
