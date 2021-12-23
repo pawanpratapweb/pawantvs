@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pawan TVS - Customer Registration</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700;800;900&display=swap"
+		rel="stylesheet" />
+</head>
+
+<body>
+	<div class="mainContainer">
+		<h1 class="topHeading">Pawan TVS</h1>
+		<div class="childContainer">
+			<h3>Registration</h3>
+			<label>Customer Name :</label>
+			<input type="text" class="inputBox" placeholder="John Doe">
+			<label>Vehicle Number :</label>
+			<input type="text" class="inputBox" placeholder="XXX XXXX XXXX">
+			<label>Chassis Number :</label>
+			<input type="text" class="inputBox">
+			<label>Moblie Number :</label>
+			<input type="text" class="inputBox" placeholder="+91 XXXXXXXXXX">
+			<label>Kilo Meter :</label>
+			<input type="text" class="inputBox" placeholder="XXXXXX KM">
+			<button class="submitBtn">Send OTP</button>
+		</div>
+	</div>
+
+	<script>
+
+		const submitBtn = document.getElementsByClassName("submitBtn")[ 0 ];
+		submitBtn.addEventListener("click", () => {
+			const customerName_ = document.getElementsByClassName('inputBox')[ 0 ].value;
+			const vehicleNo_ = document.getElementsByClassName('inputBox')[ 1 ].value;
+			const chassisNo_ = document.getElementsByClassName('inputBox')[ 2 ].value;
+			const mobileNo_ = document.getElementsByClassName('inputBox')[ 3 ].value;
+			const km_ = document.getElementsByClassName('inputBox')[ 4 ].value;
+
+
+			fetch("https://pawantvs-cfff7-default-rtdb.firebaseio.com/customers.json", {
+				method: "POST",
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					customerName: customerName_,
+					vehicleNo: vehicleNo_,
+					chassisNo: chassisNo_,
+					mobileNo: mobileNo_,
+					km: km_,
+					date: new Date().toLocaleString()
+				})
+			}).catch((err) => { })
+		})
+
+	</script>
+</body>
+
+</html>

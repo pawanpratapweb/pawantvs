@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawan TVS - Customers Details</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700;800;900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="mainContainer">
+    <table>
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Chassis Number</th>
+          <th>Vehicle No.</th>
+          <th>Mobile No.</th>
+          <th>KM</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+
+      </tbody>
+    </table>
+  </div>
+  <script>
+
+    fetch("https://pawantvs-cfff7-default-rtdb.firebaseio.com/customers.json")
+      .then(res => {
+        return res.json()
+      }).then(res => {
+        Object.values(res).forEach(element => {
+          const tbody = document.getElementsByClassName("tbody")[ 0 ];
+          tbody.insertAdjacentHTML('beforeend', `
+          <tr>
+            <td>${element.customerName}</td>
+            <td>${element.chassisNo}</td>
+            <td>${element.vehicleNo}</td>
+            <td>${element.mobileNo}</td>
+            <td>${element.km}</td>
+            <td>${element.date}</td>
+          </tr>
+          `)
+        });
+      })
+
+  </script>
+</body>
+
+</html>
